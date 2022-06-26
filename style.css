@@ -1,0 +1,61 @@
+:root{
+    --primary: #FAE5E2;
+    --accent: #48404D;
+    --pink1: #F9D6D4;
+    --pink2: #E6B5B8;
+    --pink3: #A7767C;
+}
+
+*, *::before, *::after{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Open Sans', 'Work Sans', 'Roboto', 'Montserrat', 'Source Sans', 'Segoe UI', 'Inter', 'Quicksand', sans-serif;
+    color: var(--accent);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color :var(--primary);
+    justify-content: space-evenly;
+    height: 100vh;
+    width: 100vw;
+}
+
+#header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#instructions{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#instructions > #rules, #add-book{
+    margin: 1em;
+}
+
+#add-book{
+    width: 20rem;
+    height: 3rem;
+    color: var(--accent);
+    font-size: 1rem;
+    background-color: var(--pink2);
+    border-radius: 0.75rem;
+}
+
+
+#shelf{
+    display: grid;
+    
+}
+
+footer{
+    
+}
