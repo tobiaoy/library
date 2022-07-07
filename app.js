@@ -15,8 +15,7 @@
 
 let library = [];
 const shelf = document.querySelector('#shelf');
-
-let saveButton = document.querySelector('#save-book');
+const saveButton = document.querySelector('#save-book');
 
 function readBool(readStatus){  
     if (readStatus.checked) {
@@ -31,6 +30,7 @@ function Book(title, author, pageCount, readStatus){
   this.author = author;
   this.pageCount = pageCount;
   this.readStatus = readStatus;
+  this.rendered = false;
 }
 
 function makeBook(){
@@ -39,10 +39,15 @@ function makeBook(){
 	let bookPcount = parseInt(document.querySelector('#page-count').value);
 	let bookRead = readBool(document.querySelector('#read-status'))
 	
-  if ((bookTitle !== null && bookTitle !== '') && (bookAuthor !== null && bookAuthor !== '') && (bookPcount !== null && bookPcount !== '')){
-	return new Book(bookTitle, bookAuthor, bookPcount, bookRead)
-  } else return;
-}
+    let titleValid = document.querySelector('#title').checkValidity();
+    let authorValid = document.querySelector('#author').checkValidity();
+    let pagesValid = document.querySelector('#page-count').checkValidity();
+      
+    if (titleValid && authorValid && pagesValid){
+      return new Book(bookTitle, bookAuthor, bookPcount, bookRead)
+    } else return;
+  }
+
 
 function clearForm(){
 document.querySelector('#title').value = '';
@@ -56,13 +61,20 @@ return book !== undefined;
 }
 
  function addBookToLibrary(){
-	library.push(makeBook());
+  library.push(makeBook());
   library = library.filter(clearEmpties)
   clearForm();
  
  }
 
-saveButton.addEventListener('click', addBookToLibrary);
+saveButton.addEventListener('click', () => {
+    addBookToLibrary()
+    library.forEach((book) => {
+        if (book.rendered === false){
+        renderBook(book);
+        }
+      })
+});
 
 function renderBook(book){
     let bookCard = document.createElement('div');
@@ -83,7 +95,7 @@ function renderBook(book){
     cardPages.textContent = `Page Count: ${book.pageCount}`;
     cardPages.classList.add('card-pages')
     
-    //readstatus toggle
+    //read status toggle
     let cardRead = document.createElement('button');
     cardRead.setAttribute('id', 'read-toggle');
     if (book.readStatus === true){
@@ -137,9 +149,17 @@ function renderBook(book){
     }
     
     cardRead.addEventListener('click', toggleReadStatus);
-  
+
+    //change rendered status
+    book.rendered = true;
 }
 
+/*
+
 library.forEach((book) => {
+    if (book.rendered === false){
     renderBook(book);
+    }
   })
+
+  */

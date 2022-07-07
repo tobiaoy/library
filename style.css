@@ -55,10 +55,12 @@ body{
     display: flex;
     flex-flow: row wrap;
     width: 100%;
-    height: auto;  
+    height: 40vh;  
     background-color: #f4f4f4;
     padding: 5em;
     gap: 2em;
+    justify-content: center;
+    overflow: auto;
 }
 
 .modal-form{
