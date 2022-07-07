@@ -68,7 +68,8 @@ function makeBook(){
     let pagesValid = document.querySelector('#page-count').checkValidity();
       
     if (titleValid && authorValid && pagesValid){
-      return new Book(bookTitle, bookAuthor, bookPcount, bookRead)
+      closeModal();
+      return new Book(bookTitle, bookAuthor, bookPcount, bookRead);
     } else return;
   }
 
