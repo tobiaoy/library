@@ -16,6 +16,30 @@
 let library = [];
 const shelf = document.querySelector('#shelf');
 const saveButton = document.querySelector('#save-book');
+const addButton = document.querySelector('#add-book');
+const cancelBtn = document.querySelector('#cancel-form');
+const modal = document.querySelector('.modal-form');
+
+window.addEventListener('click', outsideClick);
+addButton.addEventListener('click', openModal);
+cancelBtn.addEventListener('click', () => {
+    closeModal();
+    clearForm();
+});
+
+function openModal(){
+    modal.style.display = 'flex';
+}
+
+function closeModal() {
+    modal.style.display = 'none';
+  }
+
+function outsideClick(e) {
+    if (e.target == modal) {
+      modal.style.display = 'none';
+    }
+  }
 
 function readBool(readStatus){  
     if (readStatus.checked) {

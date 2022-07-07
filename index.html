@@ -24,35 +24,38 @@
 
 
 <div class='modal-form'>
-    <h3 class='form-title'>Add Book</h3>
-    <form action='#' id='add-form'>
-      
-      <div class='book-input'>
-      <label for='title'>Book Title</label> 
-      <input type='text' name='title' id='title' placeholder='E.g. Things Fall Apart' required>
-      </div>
-      
-      <div class='book-input'>
-      <label for='author'>Author</label> 
-      <input type='text' name='author' id='author' placeholder = 'E.g. Chinua Achebe' required>
-      </div>
-      
-      <div class='book-input'>
-      <label for='page-count'>Page Count</label> 
-      <input type='number' name='page-count' id='page-count' placeholder='E.g. 209' required>
-      </div>
-      
-      <div class='book-in'>
-      <label for=read-status>Read</label> 
-      <input type='checkbox' name='read-status' id='read-status'>
-      </div>
-      
-      <div class='form-buttons'>
-        <button id='save-book'>Save</button>
-        <button id='cancel-form' type=reset>Cancel</button>
-      </div>
-    </form>
+    <div id="modal-content">
+        <h3 class='form-title' style="
+        margin-bottom: 1.5rem;
+    ">Add Book</h3>
+        <form action='#' id='add-form'>
         
+          <div class='book-input'>
+          <label for='title'>Book Title</label>
+          <input type='text' name='title' id='title' placeholder='E.g. Things Fall Apart' required>
+          </div>
+        
+          <div class='book-input'>
+          <label for='author'>Author</label>
+          <input type='text' name='author' id='author' placeholder = 'E.g. Chinua Achebe' required>
+          </div>
+        
+          <div class='book-input'>
+          <label for='page-count'>Page Count</label>
+          <input type='number' name='page-count' id='page-count' placeholder='E.g. 209' required>
+          </div>
+        
+          <div class='book-in'>
+          <label for=read-status>Read</label>
+          <input type='checkbox' name='read-status' id='read-status'>
+          </div>
+        
+          <div class='form-buttons'>
+            <button id='save-book'>Save</button>
+            <button id='cancel-form'>Cancel</button>
+          </div>
+        </form>
+    </div>
   </div>
 
     <div id="footer">
