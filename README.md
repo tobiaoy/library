@@ -1,3 +1,3 @@
 # Library
 ### A web application that allows the user to create a book entry using form entries
-### [tobiaoy.github.io/library](Live Preview)
+[Live Preview](tobiaoy.github.io/library)
