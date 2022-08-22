@@ -1,10 +1,19 @@
 //DOM stuff to get form values
 let library = [];
-const shelf = document.querySelector('#shelf');
+const shelf = document.querySelector('#shelf-books');
 const saveButton = document.querySelector('#save-book');
 const addButton = document.querySelector('#add-book');
 const cancelBtn = document.querySelector('#cancel-form');
 const modal = document.querySelector('.modal-form');
+const shelfStatus = document.querySelector('#shelf-status');
+
+const updateShelfStatus = () => {
+  if (library.length > 0){
+    shelfStatus.textContent = '';
+  } else {
+    shelfStatus.textContent = 'This is where books would go... if there were any'
+  }
+}
 
 window.addEventListener('click', outsideClick);
 addButton.addEventListener('click', openModal);
@@ -44,7 +53,7 @@ class Book {
   this.readStatus = readStatus;
   this.rendered = false;
   }
-  
+
 }
 
 function makeBook(){
@@ -80,6 +89,7 @@ return book !== undefined;
   library = library.filter(clearEmpties)
   clearForm();
  
+  updateShelfStatus();
  }
 
 saveButton.addEventListener('click', () => {
@@ -146,6 +156,7 @@ function renderBook(book){
     cardDelete.addEventListener('click', ()=>{
       shelf.removeChild(bookCard);
       library.splice(findCardId(), 1);
+      updateShelfStatus();
     })
     
     //activate read toggle
