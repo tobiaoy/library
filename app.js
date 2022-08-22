@@ -35,12 +35,16 @@ function readBool(readStatus){
   }
 }
 
-function Book(title, author, pageCount, readStatus){
+class Book {
+  
+  constructor (title, author, pageCount, readStatus){
   this.title = title;
   this.author = author;
   this.pageCount = pageCount;
   this.readStatus = readStatus;
   this.rendered = false;
+  }
+  
 }
 
 function makeBook(){
