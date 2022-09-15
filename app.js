@@ -1,5 +1,4 @@
 //DOM stuff to get form values
-let library = [];
 const shelf = document.querySelector('#shelf-books');
 const saveButton = document.querySelector('#save-book');
 const addButton = document.querySelector('#add-book');
@@ -13,6 +12,14 @@ const updateShelfStatus = () => {
   } else {
     shelfStatus.textContent = 'This is where books would go... if there were any'
   }
+}
+
+if (localStorage.books){
+  library = JSON.parse(localStorage.getItem('books'));
+  library.forEach((book) => renderBook(book));
+  updateShelfStatus();
+} else {
+  library = []
 }
 
 window.addEventListener('click', outsideClick);
@@ -88,8 +95,8 @@ return book !== undefined;
   library.push(makeBook());
   library = library.filter(clearEmpties)
   clearForm();
- 
   updateShelfStatus();
+  updateLocalStorage();
  }
 
 saveButton.addEventListener('click', () => {
@@ -157,6 +164,7 @@ function renderBook(book){
       shelf.removeChild(bookCard);
       library.splice(findCardId(), 1);
       updateShelfStatus();
+      updateLocalStorage();
     })
     
     //activate read toggle
@@ -174,8 +182,16 @@ function renderBook(book){
       }
     }
     
-    cardRead.addEventListener('click', toggleReadStatus);
+    cardRead.addEventListener('click', () => {
+      toggleReadStatus();
+      updateLocalStorage();
+    });
 
     //change rendered status
     book.rendered = true;
+}
+
+
+const updateLocalStorage = () => {
+  localStorage.setItem('books', JSON.stringify(library));
 }
